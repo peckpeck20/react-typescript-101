@@ -5,13 +5,29 @@ import Hello from './components/Hello';
 import Joke from './components/Joke';
 
 export interface IState {
-  joke?: any;
+  joke?: IJoke;
+}
+
+export interface IJoke {
+  type: string;
+  value: {
+    categories: string[];
+    id: number;
+    joke: string;
+  };
 }
 class App extends React.Component<{}, IState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      joke: {},
+      joke: {
+        type: '',
+        value: {
+          categories: [],
+          id: 0,
+          joke: '',
+        },
+      },
     };
   }
 
@@ -30,12 +46,11 @@ class App extends React.Component<{}, IState> {
 
   public render() {
     const { joke } = this.state;
-    // console.log(joke);
     return (
       <div className='App'>
+        <Joke joke={joke} />
         <Hello name='Jose' score={12} />
         <Hello name='Ted' />
-        <Joke joke={joke} />
       </div>
     );
   }
