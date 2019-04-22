@@ -3,9 +3,12 @@ import './App.css';
 
 import Hello from './components/Hello';
 import Joke from './components/Joke';
+import NewJoke from './components/NewJoke';
+import PlayerForm from './components/PlayerForm';
 
 export interface IState {
   joke?: IJoke;
+  allPlayers?: [];
 }
 
 export interface IJoke {
@@ -20,6 +23,7 @@ class App extends React.Component<{}, IState> {
   constructor(props: {}) {
     super(props);
     this.state = {
+      allPlayers: [],
       joke: {
         type: '',
         value: {
@@ -49,8 +53,10 @@ class App extends React.Component<{}, IState> {
     return (
       <div className='App'>
         <Joke joke={joke} />
+        <NewJoke handlePress={this.getQuote} />
         <Hello name='Jose' score={12} />
         <Hello name='Ted' />
+        <PlayerForm />
       </div>
     );
   }

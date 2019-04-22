@@ -6,8 +6,7 @@ interface IProps {
 }
 
 const Joke = ({ joke }: IProps) => {
-  console.log(joke);
-
+  // console.log(joke);
   if (joke) {
     if (joke.type === 'success') {
       return (
